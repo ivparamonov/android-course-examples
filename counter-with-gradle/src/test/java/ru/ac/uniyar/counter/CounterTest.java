@@ -1,7 +1,7 @@
 package ru.ac.uniyar.counter;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 public class CounterTest {
 
@@ -9,21 +9,21 @@ public class CounterTest {
 
     @Test
     public void counterIsInitiallyReset() {
-        assertEquals(0, counter.getValue());
+        assertThat(counter.getValue()).isEqualTo(0);
     }
 
     @Test
     public void increaseIncreasesTheCounter() {
         counter.increase();
-        assertEquals(1, counter.getValue());
+        assertThat(counter.getValue()).isEqualTo(1);
     }
 
     @Test
     public void resetResetsTheCounter() {
         counter.increase();
-        assertTrue(counter.getValue() != 0);
+        assertThat(counter.getValue()).isNotEqualTo(0);
         counter.reset();
-        assertEquals(0, counter.getValue());
+        assertThat(counter.getValue()).isEqualTo(0);
     }
 
 }
