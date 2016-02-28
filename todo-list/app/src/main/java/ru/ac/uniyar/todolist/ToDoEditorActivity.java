@@ -1,8 +1,9 @@
 package ru.ac.uniyar.todolist;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -13,7 +14,8 @@ import static java.util.Calendar.*;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ToDoEditorActivity extends Activity {
+public class ToDoEditorActivity extends AppCompatActivity {
+    @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.titleText) EditText titleText;
     @Bind(R.id.descriptionText) EditText descriptionText;
     @Bind(R.id.dueDatePicker) DatePicker dueDatePicker;
@@ -22,6 +24,9 @@ public class ToDoEditorActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.todo_editor);
         ButterKnife.bind(this);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Todo todo = getIntent().getParcelableExtra("todo");
         if (todo != null) {
             titleText.setText(todo.getTitle());
