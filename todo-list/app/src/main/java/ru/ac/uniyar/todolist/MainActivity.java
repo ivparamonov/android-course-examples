@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initListAdapter() {
-        todoListCursor = db.query("todos", null, null, null, null, null, "dueDate");
-        String[] from = new String[] { "title", "description" };
-        int[] to = new int[] { R.id.titleText, R.id.descriptionText };
+        todoListCursor = db.query("todos", null, null, null, null, null, "dueDate desc");
+        String[] from = new String[] { "title", "description", "dueDate" };
+        int[] to = new int[] { R.id.titleText, R.id.descriptionText, R.id.dueDateText };
         adapter = new SimpleCursorAdapter(this,
                 R.layout.todo_item, todoListCursor, from, to,
                 CursorAdapter.FLAG_AUTO_REQUERY);
