@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -37,7 +39,26 @@ public class ToDoEditorActivity extends AppCompatActivity {
         }
     }
 
-    public void onOkButtonClick(View v) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.todo_editor, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_save:
+                onSaveButtonClick();
+                return true;
+            case android.R.id.home:
+                onUpButtonClick();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void onSaveButtonClick() {
         Todo todo = getIntent().getParcelableExtra("todo");
         if (todo == null) todo = new Todo();
         todo.setTitle(titleText.getText().toString());
@@ -50,7 +71,7 @@ public class ToDoEditorActivity extends AppCompatActivity {
         finish();
     }
 
-    public void onCancelButtonClick(View v) {
+    public void onUpButtonClick() {
         setResult(RESULT_CANCELED);
         finish();
     }

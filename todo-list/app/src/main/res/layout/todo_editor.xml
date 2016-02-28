@@ -61,25 +61,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/dueDatePicker"/>
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-        <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Cancel"
-                android:id="@+id/cancelButton" android:layout_gravity="center_horizontal|bottom"
-                android:onClick="onCancelButtonClick" />
-        <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="OK"
-                android:id="@+id/okButton" android:layout_gravity="center_horizontal|bottom"
-                android:onClick="onOkButtonClick" />
-    </LinearLayout>
 </LinearLayout>
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
