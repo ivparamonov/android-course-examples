@@ -19,7 +19,7 @@
         </activity>
         <activity
             android:name=".ToDoEditorActivity"
-            android:label="To-do Editor"/>
+            android:label="@string/todo_editor"/>
     </application>
 
 </manifest>
