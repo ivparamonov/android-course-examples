@@ -33,3 +33,6 @@ captures/
 
 # Temporary files
 *~
+
+# IDEA files
+.idea/
