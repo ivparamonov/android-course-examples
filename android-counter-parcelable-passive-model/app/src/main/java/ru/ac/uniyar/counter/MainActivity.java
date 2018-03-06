@@ -8,9 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainActivity extends Activity
 {
-    private TextView counterText;
+    @BindView(R.id.counterText) TextView counterText;
     private Counter counter;
 
     /** Called when the activity is first created. */
@@ -19,24 +23,12 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        ButterKnife.bind(this);
         if (savedInstanceState == null) {
             counter = new Counter();
         } else {
             counter = savedInstanceState.getParcelable("model");
         }
-        counterText = (TextView) findViewById(R.id.counterText);
-        findViewById(R.id.increaseButton).setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onIncreaseButtonClick(v);
-            }
-        });
-        findViewById(R.id.resetButton).setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onResetButtonClick(v);
-            }
-        });
         updateCounterView();
     }
 
@@ -50,11 +42,13 @@ public class MainActivity extends Activity
         counterText.setText(String.valueOf(counter.getValue()));
     }
 
+    @OnClick(R.id.increaseButton)
     public void onIncreaseButtonClick(View v) {
         counter.increase();
         updateCounterView();
     }
 
+    @OnClick(R.id.resetButton)
     public void onResetButtonClick(View v) {
         counter.reset();
         updateCounterView();
