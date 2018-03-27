@@ -12,15 +12,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ListView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.todoList) ListView todoListView;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.todoList) ListView todoListView;
     SimpleCursorAdapter adapter;
     Cursor todoListCursor;
     SQLiteDatabase db;

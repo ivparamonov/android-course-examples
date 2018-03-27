@@ -6,21 +6,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
 import java.util.Calendar;
 import static java.util.Calendar.*;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ToDoEditorActivity extends AppCompatActivity {
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.titleText) EditText titleText;
-    @Bind(R.id.descriptionText) EditText descriptionText;
-    @Bind(R.id.dueDatePicker) DatePicker dueDatePicker;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.titleText) EditText titleText;
+    @BindView(R.id.descriptionText) EditText descriptionText;
+    @BindView(R.id.dueDatePicker) DatePicker dueDatePicker;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
