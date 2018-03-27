@@ -14,13 +14,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
-    @Bind(R.id.ip_text_view) TextView ipTextView;
-    @Bind(R.id.progress_bar) ProgressBar progressBar;
+    @BindView(R.id.ip_text_view) TextView ipTextView;
+    @BindView(R.id.progress_bar) ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
