@@ -22,17 +22,24 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.start_button)
     Button startButton;
 
+    private TimerTask timerTask = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        timerTask = (TimerTask) getLastCustomNonConfigurationInstance();
+        if (timerTask != null) {
+            timerTask.setProgressListener(this);
+        }
     }
 
     @OnClick(R.id.start_button)
     public void onStartButtonClick(View v) {
         int timeToCountdown = Integer.parseInt(timeEditText.getText().toString());
-        new TimerTask(timeToCountdown, this).execute();
+        timerTask = new TimerTask(timeToCountdown, this);
+        timerTask.execute();
     }
 
     @Override
@@ -43,5 +50,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onDone() {
         remainingTimeTextView.setText(getString(R.string.done));
+    }
+
+    @Override
+    public Object onRetainCustomNonConfigurationInstance() {
+        return timerTask;
     }
 }

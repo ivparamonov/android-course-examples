@@ -17,6 +17,10 @@ public class TimerTask extends AsyncTask<Void, Integer, Void> {
         this.progressListener = progressListener;
     }
 
+    public void setProgressListener(ProgressListener progressListener) {
+        this.progressListener = progressListener;
+    }
+
     @Override
     protected Void doInBackground(Void... voids) {
         try {
@@ -33,11 +37,15 @@ public class TimerTask extends AsyncTask<Void, Integer, Void> {
 
     @Override
     protected void onProgressUpdate(Integer... values) {
-        progressListener.onProgressUpdate(values[0]);
+        if (progressListener != null) {
+            progressListener.onProgressUpdate(values[0]);
+        }
     }
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        progressListener.onDone();
+        if (progressListener != null) {
+            progressListener.onDone();
+        }
     }
 }
