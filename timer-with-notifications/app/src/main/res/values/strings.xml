@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Timer with Notifications</string>
+    <string name="start">Start</string>
+    <string name="done">DONE</string>
+</resources>
