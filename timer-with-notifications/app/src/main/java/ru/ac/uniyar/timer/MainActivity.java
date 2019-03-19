@@ -1,5 +1,10 @@
 package ru.ac.uniyar.timer;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -50,6 +55,29 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onDone() {
         remainingTimeTextView.setText(getString(R.string.done));
+        showNotification();
+    }
+
+    private void showNotification() {
+        Intent toLaunch = new Intent(this, MainActivity.class);
+        toLaunch.setAction("android.intent.action.MAIN");
+        toLaunch.addCategory("android.intent.category.LAUNCHER");
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+                this, 0, toLaunch,
+               PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setContentTitle(getString(R.string.app_name))
+                        .setContentText(getString(R.string.countdown_done))
+                        .setContentIntent(pendingIntent)
+                        .setAutoCancel(true)
+                        .setVibrate(new long[] { 0, 500, 500, 500, 500, 500, 500, 500 });
+        Notification notification = builder.build();
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(1, notification);
     }
 
     @Override

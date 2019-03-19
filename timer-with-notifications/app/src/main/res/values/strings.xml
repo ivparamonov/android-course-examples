@@ -2,4 +2,5 @@
     <string name="app_name">Timer with Notifications</string>
     <string name="start">Start</string>
     <string name="done">DONE</string>
+    <string name="countdown_done">The countdown is done</string>
 </resources>
